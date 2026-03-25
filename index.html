@@ -98,7 +98,7 @@ animation:pulse 1.2s infinite;
 100%{transform:scale(1);}
 }
 
-/* TEXTO URGÊNCIA */
+/* TEXTO */
 .vagas {
 color:#ff4444;
 font-size:14px;
@@ -153,6 +153,21 @@ margin-top:15px;
 font-size:14px;
 color:#aaa;
 }
+
+/* BANDEIRAS ANIMADAS */
+.flag {
+display:inline-block;
+font-size:22px;
+animation:wave 1.5s infinite ease-in-out;
+}
+
+@keyframes wave {
+0% { transform: rotate(0deg); }
+25% { transform: rotate(10deg); }
+50% { transform: rotate(0deg); }
+75% { transform: rotate(-10deg); }
+100% { transform: rotate(0deg); }
+}
 </style>
 </head>
 
@@ -177,45 +192,34 @@ color:#aaa;
 
 <div class="container">
 
-<div class="card">
-<h3>100 seguidores</h3>
-<p class="price">R$1,50</p>
-<div class="vagas">⏳ Últimas entregas com esse preço</div>
-<div class="btn" onclick="comprar(100)">COMPRAR AGORA</div>
-</div>
+<h2 style="grid-column: 1/-1;">📱 Seguidores Instagram</h2>
 
-<div class="card">
-<h3>200 seguidores</h3>
-<p class="price">R$2,50</p>
-<div class="vagas">⏳ Últimas entregas com esse preço</div>
-<div class="btn" onclick="comprar(200)">COMPRAR AGORA</div>
-</div>
+<div class="card"><h3>100 seguidores</h3><p class="price">R$1,50</p><div class="vagas">⏳ Últimas entregas com esse preço</div><div class="btn" onclick="comprar(100)">COMPRAR AGORA</div></div>
 
-<div class="card">
-<h3>500 seguidores</h3>
-<p class="price">R$5,00</p>
-<div class="vagas">⏳ Últimas entregas com esse preço</div>
-<div class="btn" onclick="comprar(500)">COMPRAR AGORA</div>
-</div>
+<div class="card"><h3>200 seguidores</h3><p class="price">R$2,50</p><div class="vagas">⏳ Últimas entregas com esse preço</div><div class="btn" onclick="comprar(200)">COMPRAR AGORA</div></div>
 
-<div class="card">
-<h3>1000 seguidores</h3>
-<p class="price">R$9,00</p>
-<div class="vagas">⏳ Últimas entregas com esse preço</div>
-<div class="btn" onclick="comprar(1000)">COMPRAR AGORA</div>
-</div>
+<div class="card"><h3>500 seguidores</h3><p class="price">R$5,00</p><div class="vagas">⏳ Últimas entregas com esse preço</div><div class="btn" onclick="comprar(500)">COMPRAR AGORA</div></div>
 
-<div class="card">
-<h3>2000 seguidores</h3>
-<p class="price">R$16,00</p>
-<div class="vagas">⏳ Últimas entregas com esse preço</div>
-<div class="btn" onclick="comprar(2000)">COMPRAR AGORA</div>
-</div>
+<div class="card"><h3>1000 seguidores</h3><p class="price">R$9,00</p><div class="vagas">⏳ Últimas entregas com esse preço</div><div class="btn" onclick="comprar(1000)">COMPRAR AGORA</div></div>
+
+<div class="card"><h3>2000 seguidores</h3><p class="price">R$16,00</p><div class="vagas">⏳ Últimas entregas com esse preço</div><div class="btn" onclick="comprar(2000)">COMPRAR AGORA</div></div>
+
+<h2 style="grid-column: 1/-1;">🌐 Números Virtuais</h2>
+
+<div class="card"><h3><span class="flag">🇫🇮</span> Finlândia</h3><p class="price">R$4,00</p><div class="vagas">⏳ Entrega imediata disponível</div><div class="btn" onclick="numero('Finlândia')">COMPRAR AGORA</div></div>
+
+<div class="card"><h3><span class="flag">🇿🇦</span> África do Sul</h3><p class="price">R$5,00</p><div class="vagas">⏳ Entrega imediata disponível</div><div class="btn" onclick="numero('África do Sul')">COMPRAR AGORA</div></div>
+
+<div class="card"><h3><span class="flag">🇺🇸</span> EUA</h3><p class="price">R$6,50</p><div class="vagas">⏳ Entrega imediata disponível</div><div class="btn" onclick="numero('EUA')">COMPRAR AGORA</div></div>
+
+<div class="card"><h3><span class="flag">🇵🇹</span> Portugal</h3><p class="price">R$9,00</p><div class="vagas">⏳ Entrega imediata disponível</div><div class="btn" onclick="numero('Portugal')">COMPRAR AGORA</div></div>
+
+<div class="card"><h3><span class="flag">🇧🇷</span> Brasil</h3><p class="price">R$14,00</p><div class="vagas">⏳ Entrega imediata disponível</div><div class="btn" onclick="numero('Brasil')">COMPRAR AGORA</div></div>
 
 </div>
 
 <div id="notificacoes"></div>
-<div class="whats" onclick="numero()">💬</div>
+<div class="whats" onclick="numero('geral')">💬</div>
 
 <script>
 function comprar(q){
@@ -223,8 +227,8 @@ let msg=`Olá! Gostaria de fazer um pedido de ${q} seguidores`;
 window.open(`https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`);
 }
 
-function numero(){
-let msg="Olá! Gostaria de fazer um pedido de um número virtual";
+function numero(pais){
+let msg=`Olá! Gostaria de fazer um pedido de um número virtual (${pais})`;
 window.open(`https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`);
 }
 
@@ -238,20 +242,28 @@ tempo--;
 if(tempo<=0) tempo=300;
 },1000);
 
-/* NOTIFICAÇÕES */
-const nomes=["João","Maria","Lucas","Ana","Pedro","Carlos","Fernanda","Rafael"];
+/* NOTIFICAÇÕES SEM REPETIR */
+const nomes=["João","Maria","Lucas","Ana","Pedro","Carlos","Fernanda","Rafael","Juliana","Bruno"];
+let usados=[];
+
+function pegarNome(){
+if(usados.length===nomes.length) usados=[];
+let nome;
+do{
+nome=nomes[Math.floor(Math.random()*nomes.length)];
+}while(usados.includes(nome));
+usados.push(nome);
+return nome;
+}
 
 setInterval(()=>{
-let n=nomes[Math.floor(Math.random()*nomes.length)];
+let n=pegarNome();
 let q=[100,200,500,1000,2000][Math.floor(Math.random()*5)];
-
-let notif=document.createElement("div");
-notif.className="notif";
-notif.innerText=`${n} acabou de comprar ${q} seguidores`;
-
-document.getElementById("notificacoes").appendChild(notif);
-
-setTimeout(()=>notif.remove(),4000);
+let d=document.createElement("div");
+d.className="notif";
+d.innerText=`${n} acabou de comprar ${q} seguidores`;
+document.getElementById("notificacoes").appendChild(d);
+setTimeout(()=>d.remove(),4000);
 },2500);
 
 /* FUNDO */
@@ -265,7 +277,7 @@ for(let i=0;i<80;i++){
 p.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*3,dx:Math.random()-0.5,dy:Math.random()-0.5});
 }
 
-function a(){
+function anim(){
 x.clearRect(0,0,c.width,c.height);
 p.forEach(e=>{
 e.x+=e.dx;e.y+=e.dy;
@@ -274,9 +286,9 @@ x.arc(e.x,e.y,e.s,0,6.28);
 x.fillStyle="#00ff88";
 x.fill();
 });
-requestAnimationFrame(a);
+requestAnimationFrame(anim);
 }
-a();
+anim();
 </script>
 
 </body>
