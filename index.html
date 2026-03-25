@@ -19,6 +19,7 @@ body {
     background: var(--bg);
     color: var(--text);
     text-align: center;
+    overflow-x: hidden;
 }
 
 header {
@@ -36,6 +37,8 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 20px;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .card {
@@ -67,6 +70,184 @@ h1 {
     font-weight: bold;
     transition: 0.3s;
 }
+
+.btn:hover {
+    background: #1ebe5d;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: #111;
+}
+
+/* fundo animado */
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+<h1>🚀 LOJINHA DOS DRAKES</h1>
+<p>Entrega rápida • Suporte no WhatsApp</p>
+</header>
+
+<div class="container">
+
+<h2 style="grid-column: 1/-1;">📱 Seguidores Instagram</h2>
+
+<div class="card">
+<h3>100 Seguidores</h3>
+<p class="price">R$ 1,50</p>
+<a class="btn" onclick="comprar(100)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>200 Seguidores</h3>
+<p class="price">R$ 2,50</p>
+<a class="btn" onclick="comprar(200)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>500 Seguidores</h3>
+<p class="price">R$ 5,00</p>
+<a class="btn" onclick="comprar(500)">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">TOP</div>
+<h3>1.000 Seguidores</h3>
+<p class="price">R$ 9,00</p>
+<a class="btn" onclick="comprar(1000)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>2.000 Seguidores</h3>
+<p class="price">R$ 16,00</p>
+<a class="btn" onclick="comprar(2000)">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">VIP</div>
+<h3>5.000 Seguidores</h3>
+<p class="price">R$ 35,00</p>
+<a class="btn" onclick="comprar(5000)">Comprar</a>
+</div>
+
+<h2 style="grid-column: 1/-1;">🌐 Números Virtuais</h2>
+
+<div class="card">
+<h3>Finlândia</h3>
+<p class="price">R$ 4,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>África do Sul</h3>
+<p class="price">R$ 5,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>EUA</h3>
+<p class="price">R$ 6,50</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Portugal</h3>
+<p class="price">R$ 9,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">PREMIUM</div>
+<h3>Brasil</h3>
+<p class="price">R$ 14,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Lojinha dos Drakes</p>
+</footer>
+
+<script>
+function comprar(qtd) {
+    let msg = `Olá! Gostaria de fazer um pedido de ${qtd} seguidores`;
+    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+
+function numero() {
+    let msg = "Olá! Gostaria de fazer um pedido de um número virtual";
+    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+
+/* animação */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 60; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3,
+        speedX: Math.random() - 0.5,
+        speedY: Math.random() - 0.5
+    });
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = "#00ff88";
+        ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>}
 
 .btn:hover {
     background: #1ebe5d;
