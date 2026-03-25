@@ -3,101 +3,155 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lojinha dos Drakes OFC</title>
+<title>Lojinha dos Drakes</title>
 
 <style>
 :root {
-    --primary: #00ff88;
-    --bg: #0a0a0a;
-    --card: #151515;
-    --text: #fff;
+--primary:#00ff88;
+--bg:#0a0a0a;
+--card:#151515;
+--text:#fff;
 }
 
 body {
-    margin: 0;
-    font-family: Arial;
-    background: var(--bg);
-    color: var(--text);
-    text-align: center;
-    overflow-x: hidden;
+margin:0;
+font-family:Arial;
+background:var(--bg);
+color:var(--text);
+text-align:center;
+overflow-x:hidden;
 }
 
+/* FUNDO */
+#bg {
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+
+/* TOPO */
+.topo {
+background:#ff0000;
+padding:10px;
+font-weight:bold;
+animation:piscando 1s infinite;
+}
+@keyframes piscando {
+0%,100%{opacity:1;}
+50%{opacity:0.4;}
+}
+
+/* HEADER */
 header {
-    padding: 30px;
-    background: #111;
-    border-bottom: 2px solid var(--primary);
+padding:25px;
+background:#111;
+border-bottom:2px solid var(--primary);
 }
 
-h1 {
-    color: var(--primary);
+.prova {
+font-size:14px;
+color:#ccc;
+margin-top:5px;
 }
 
+/* GRID */
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap: 20px;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+position:relative;
+z-index:1;
 }
 
+/* CARD */
 .card {
-    background: var(--card);
-    padding: 20px;
-    border-radius: 12px;
-    transition: 0.3s;
-    position: relative;
+background:var(--card);
+padding:20px;
+border-radius:12px;
+transition:0.3s;
+position:relative;
 }
-
 .card:hover {
-    transform: scale(1.05);
-    border: 1px solid var(--primary);
+transform:scale(1.05);
+border:1px solid var(--primary);
 }
 
 .price {
-    color: var(--primary);
-    font-size: 22px;
-    margin: 10px 0;
+color:var(--primary);
+font-size:22px;
 }
 
+/* BOTÃO */
 .btn {
-    background: #25d366;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    display: block;
-    font-weight: bold;
-    transition: 0.3s;
+background:#25d366;
+padding:12px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+animation:pulse 1.2s infinite;
+}
+@keyframes pulse {
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
-.btn:hover {
-    background: #1ebe5d;
+/* TEXTO URGÊNCIA */
+.vagas {
+color:#ff4444;
+font-size:14px;
+margin-top:5px;
 }
 
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--primary);
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
+/* TIMER */
+.timer {
+color:#ff0000;
+font-weight:bold;
+margin-top:10px;
 }
 
-footer {
-    margin-top: 30px;
-    padding: 20px;
-    background: #111;
+/* NOTIFICAÇÕES */
+#notificacoes {
+position:fixed;
+bottom:20px;
+left:20px;
+z-index:999;
+}
+.notif {
+background:#111;
+border:1px solid var(--primary);
+padding:10px;
+border-radius:10px;
+margin-top:10px;
+animation:subir 4s forwards;
+font-size:13px;
+}
+@keyframes subir {
+0%{transform:translateY(50px);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-80px);opacity:0;}
 }
 
-/* fundo animado */
-#bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
+/* WHATS */
+.whats {
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+cursor:pointer;
+z-index:999;
+}
+
+/* SELOS */
+.sel {
+margin-top:15px;
+font-size:14px;
+color:#aaa;
 }
 </style>
 </head>
@@ -106,282 +160,123 @@ footer {
 
 <canvas id="bg"></canvas>
 
+<div class="topo">🚀 Alta demanda agora — vários pedidos sendo processados</div>
+
 <header>
 <h1>🚀 LOJINHA DOS DRAKES</h1>
-<p>Entrega rápida • Suporte no WhatsApp</p>
+
+<div class="timer" id="timer"></div>
+
+<div class="prova">🔥 +1.284 pedidos entregues</div>
+<div class="prova">📈 Seguidores sendo entregues agora</div>
+
+<div class="sel">
+🔒 Compra segura • ⚡ Entrega rápida • 💬 Suporte imediato
+</div>
 </header>
 
 <div class="container">
 
-<h2 style="grid-column: 1/-1;">📱 Seguidores Instagram</h2>
-
 <div class="card">
-<h3>100 Seguidores</h3>
-<p class="price">R$ 1,50</p>
-<a class="btn" onclick="comprar(100)">Comprar</a>
-</div>
-
-<div class="card">
-<h3>200 Seguidores</h3>
-<p class="price">R$ 2,50</p>
-<a class="btn" onclick="comprar(200)">Comprar</a>
+<h3>100 seguidores</h3>
+<p class="price">R$1,50</p>
+<div class="vagas">⏳ Últimas entregas com esse preço</div>
+<div class="btn" onclick="comprar(100)">COMPRAR AGORA</div>
 </div>
 
 <div class="card">
-<h3>500 Seguidores</h3>
-<p class="price">R$ 5,00</p>
-<a class="btn" onclick="comprar(500)">Comprar</a>
+<h3>200 seguidores</h3>
+<p class="price">R$2,50</p>
+<div class="vagas">⏳ Últimas entregas com esse preço</div>
+<div class="btn" onclick="comprar(200)">COMPRAR AGORA</div>
 </div>
 
 <div class="card">
-<div class="badge">TOP</div>
-<h3>1.000 Seguidores</h3>
-<p class="price">R$ 9,00</p>
-<a class="btn" onclick="comprar(1000)">Comprar</a>
+<h3>500 seguidores</h3>
+<p class="price">R$5,00</p>
+<div class="vagas">⏳ Últimas entregas com esse preço</div>
+<div class="btn" onclick="comprar(500)">COMPRAR AGORA</div>
 </div>
 
 <div class="card">
-<h3>2.000 Seguidores</h3>
-<p class="price">R$ 16,00</p>
-<a class="btn" onclick="comprar(2000)">Comprar</a>
+<h3>1000 seguidores</h3>
+<p class="price">R$9,00</p>
+<div class="vagas">⏳ Últimas entregas com esse preço</div>
+<div class="btn" onclick="comprar(1000)">COMPRAR AGORA</div>
 </div>
 
 <div class="card">
-<div class="badge">VIP</div>
-<h3>5.000 Seguidores</h3>
-<p class="price">R$ 35,00</p>
-<a class="btn" onclick="comprar(5000)">Comprar</a>
-</div>
-
-<h2 style="grid-column: 1/-1;">🌐 Números Virtuais</h2>
-
-<div class="card">
-<h3>Finlândia</h3>
-<p class="price">R$ 4,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>África do Sul</h3>
-<p class="price">R$ 5,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>EUA</h3>
-<p class="price">R$ 6,50</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>Portugal</h3>
-<p class="price">R$ 9,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<div class="badge">PREMIUM</div>
-<h3>Brasil</h3>
-<p class="price">R$ 14,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
+<h3>2000 seguidores</h3>
+<p class="price">R$16,00</p>
+<div class="vagas">⏳ Últimas entregas com esse preço</div>
+<div class="btn" onclick="comprar(2000)">COMPRAR AGORA</div>
 </div>
 
 </div>
 
-<footer>
-<p>© 2026 Lojinha dos Drakes</p>
-</footer>
+<div id="notificacoes"></div>
+<div class="whats" onclick="numero()">💬</div>
 
 <script>
-function comprar(qtd) {
-    let msg = `Olá! Gostaria de fazer um pedido de ${qtd} seguidores`;
-    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+function comprar(q){
+let msg=`Olá! Gostaria de fazer um pedido de ${q} seguidores`;
+window.open(`https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`);
 }
 
-function numero() {
-    let msg = "Olá! Gostaria de fazer um pedido de um número virtual";
-    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+function numero(){
+let msg="Olá! Gostaria de fazer um pedido de um número virtual";
+window.open(`https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`);
 }
 
-/* animação */
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+/* TIMER */
+let tempo=300;
+setInterval(()=>{
+let m=Math.floor(tempo/60);
+let s=tempo%60;
+document.getElementById("timer").innerText=`⏳ Promoção termina em ${m}:${s<10?'0'+s:s}`;
+tempo--;
+if(tempo<=0) tempo=300;
+},1000);
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+/* NOTIFICAÇÕES */
+const nomes=["João","Maria","Lucas","Ana","Pedro","Carlos","Fernanda","Rafael"];
 
-let particles = [];
+setInterval(()=>{
+let n=nomes[Math.floor(Math.random()*nomes.length)];
+let q=[100,200,500,1000,2000][Math.floor(Math.random()*5)];
 
-for (let i = 0; i < 60; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 3,
-        speedX: Math.random() - 0.5,
-        speedY: Math.random() - 0.5
-    });
+let notif=document.createElement("div");
+notif.className="notif";
+notif.innerText=`${n} acabou de comprar ${q} seguidores`;
+
+document.getElementById("notificacoes").appendChild(notif);
+
+setTimeout(()=>notif.remove(),4000);
+},2500);
+
+/* FUNDO */
+const c=document.getElementById("bg");
+const x=c.getContext("2d");
+c.width=innerWidth;
+c.height=innerHeight;
+
+let p=[];
+for(let i=0;i<80;i++){
+p.push({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*3,dx:Math.random()-0.5,dy:Math.random()-0.5});
 }
 
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = "#00ff88";
-        ctx.fill();
-    });
-
-    requestAnimationFrame(animate);
+function a(){
+x.clearRect(0,0,c.width,c.height);
+p.forEach(e=>{
+e.x+=e.dx;e.y+=e.dy;
+x.beginPath();
+x.arc(e.x,e.y,e.s,0,6.28);
+x.fillStyle="#00ff88";
+x.fill();
+});
+requestAnimationFrame(a);
 }
-
-animate();
-</script>
-
-</body>
-</html>}
-
-.btn:hover {
-    background: #1ebe5d;
-}
-
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--primary);
-    color: black;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-}
-
-footer {
-    margin-top: 30px;
-    padding: 20px;
-    background: #111;
-}
-
-/* ANIMAÇÃO */
-.fade {
-    animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>🚀 LOJINHA DOS DRAKES</h1>
-<p>Entrega rápida • Suporte no WhatsApp</p>
-</header>
-
-<div class="container fade">
-
-<h2 style="grid-column: 1/-1;">📱 Seguidores Instagram</h2>
-
-<div class="card">
-<h3>100 Seguidores</h3>
-<p class="price">R$ 1,50</p>
-<a class="btn" onclick="comprar(100)">Comprar</a>
-</div>
-
-<div class="card">
-<h3>200 Seguidores</h3>
-<p class="price">R$ 2,50</p>
-<a class="btn" onclick="comprar(200)">Comprar</a>
-</div>
-
-<div class="card">
-<h3>500 Seguidores</h3>
-<p class="price">R$ 5,00</p>
-<a class="btn" onclick="comprar(500)">Comprar</a>
-</div>
-
-<div class="card">
-<div class="badge">TOP</div>
-<h3>1.000 Seguidores</h3>
-<p class="price">R$ 9,00</p>
-<a class="btn" onclick="comprar(1000)">Comprar</a>
-</div>
-
-<div class="card">
-<h3>2.000 Seguidores</h3>
-<p class="price">R$ 16,00</p>
-<a class="btn" onclick="comprar(2000)">Comprar</a>
-</div>
-
-<div class="card">
-<div class="badge">VIP</div>
-<h3>5.000 Seguidores</h3>
-<p class="price">R$ 35,00</p>
-<a class="btn" onclick="comprar(5000)">Comprar</a>
-</div>
-
-<h2 style="grid-column: 1/-1;">🌐 Números Virtuais</h2>
-
-<div class="card">
-<h3>Finlândia</h3>
-<p class="price">R$ 4,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>África do Sul</h3>
-<p class="price">R$ 5,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>EUA</h3>
-<p class="price">R$ 6,50</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<h3>Portugal</h3>
-<p class="price">R$ 9,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-<div class="card">
-<div class="badge">PREMIUM</div>
-<h3>Brasil</h3>
-<p class="price">R$ 14,00</p>
-<a class="btn" onclick="numero()">Comprar</a>
-</div>
-
-</div>
-
-<footer>
-<p>© 2026 Lojinha dos Drakes</p>
-</footer>
-
-<script>
-function comprar(qtd) {
-    let msg = `Olá! Gostaria de fazer um pedido de ${qtd} seguidores`;
-    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-}
-
-function numero() {
-    let msg = "Olá! Gostaria de fazer um pedido de um número virtual";
-    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
-}
+a();
 </script>
 
 </body>
