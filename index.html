@@ -1,46 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lojinha dos Drakes OFC | Oficial</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary: #00ff88; --bg: #0a0a0a; --card: #151515; --text: #ffffff; --whatsapp: #25d366; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; text-align: center; }
-        header { padding: 40px 20px; border-bottom: 2px solid var(--primary); background: #111; }
-        .container { max-width: 1000px; margin: 20px auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: var(--card); border: 1px solid #333; border-radius: 12px; padding: 20px; transition: 0.3s; position: relative; overflow: hidden; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .price { font-size: 1.8rem; color: var(--primary); font-weight: bold; margin: 10px 0; }
-        .btn { background: var(--whatsapp); color: white; padding: 12px; text-decoration: none; border-radius: 8px; display: block; font-weight: bold; }
-        .badge { background: var(--primary); color: black; font-size: 0.7rem; position: absolute; top: 10px; right: -25px; transform: rotate(45deg); width: 100px; font-weight: bold; }
-        h2 { grid-column: 1/-1; color: var(--primary); margin-top: 30px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lojinha dos Drakes OFC</title>
+
+<style>
+:root {
+    --primary: #00ff88;
+    --bg: #0a0a0a;
+    --card: #151515;
+    --text: #fff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: var(--bg);
+    color: var(--text);
+    text-align: center;
+}
+
+header {
+    padding: 30px;
+    background: #111;
+    border-bottom: 2px solid var(--primary);
+}
+
+h1 {
+    color: var(--primary);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    border: 1px solid var(--primary);
+}
+
+.price {
+    color: var(--primary);
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.btn {
+    background: #25d366;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #1ebe5d;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: #111;
+}
+
+/* ANIMAÇÃO */
+.fade {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>LOJINHA DOS DRAKES OFC 🚀</h1>
-        <p>Preços atualizados - Entrega imediata</p>
-    </header>
 
-    <div class="container">
-        <h2>📱 Seguidores Instagram</h2>
-        <div class="card"><h3>100 Seg</h3><p class="price">R$ 1,50</p><a href="https://wa.me/5511967779846?text=Quero%20100%20seguidores" class="btn">Comprar</a></div>
-        <div class="card"><h3>200 Seg</h3><p class="price">R$ 2,50</p><a href="https://wa.me/5511967779846?text=Quero%20200%20seguidores" class="btn">Comprar</a></div>
-        <div class="card"><h3>500 Seg</h3><p class="price">R$ 5,00</p><a href="https://wa.me/5511967779846?text=Quero%20500%20seguidores" class="btn">Comprar</a></div>
-        <div class="card"><div class="badge">TOP</div><h3>1.000 Seg</h3><p class="price">R$ 9,00</p><a href="https://wa.me/5511967779846?text=Quero%201000%20seguidores" class="btn">Comprar</a></div>
-        <div class="card"><h3>2.000 Seg</h3><p class="price">R$ 16,00</p><a href="https://wa.me/5511967779846?text=Quero%202000%20seguidores" class="btn">Comprar</a></div>
-        <div class="card"><div class="badge">VIP</div><h3>5.000 Seg</h3><p class="price">R$ 35,00</p><a href="https://wa.me/5511967779846?text=Quero%205000%20seguidores" class="btn">Comprar</a></div>
+<header>
+<h1>🚀 LOJINHA DOS DRAKES</h1>
+<p>Entrega rápida • Suporte no WhatsApp</p>
+</header>
 
-        <h2>🌐 Números Virtuais</h2>
-        <div class="card"><h3>🇫🇮 Finlândia</h3><p class="price">R$ 4,00</p><a href="https://wa.me/5511959258398?text=Quero%20numero%20Finlandia" class="btn">Comprar</a></div>
-        <div class="card"><h3>🇿🇦 África do Sul</h3><p class="price">R$ 5,00</p><a href="https://wa.me/5511959258398?text=Quero%20numero%20Africa" class="btn">Comprar</a></div>
-        <div class="card"><h3>🇺🇸 EUA</h3><p class="price">R$ 6,50</p><a href="https://wa.me/5511959258398?text=Quero%20numero%20EUA" class="btn">Comprar</a></div>
-        <div class="card"><h3>🇵🇹 Portugal</h3><p class="price">R$ 9,00</p><a href="https://wa.me/5511959258398?text=Quero%20numero%20Portugal" class="btn">Comprar</a></div>
-        <div class="card"><div class="badge">PREMIUM</div><h3>🇧🇷 Brasil</h3><p class="price">R$ 14,00</p><a href="https://wa.me/5511959258398?text=Quero%20numero%20Brasil" class="btn">Comprar</a></div>
-    </div>
+<div class="container fade">
 
-    <footer><p>&copy; 2026 Lojinha dos Drakes OFC</p></footer>
+<h2 style="grid-column: 1/-1;">📱 Seguidores Instagram</h2>
+
+<div class="card">
+<h3>100 Seguidores</h3>
+<p class="price">R$ 1,50</p>
+<a class="btn" onclick="comprar(100)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>200 Seguidores</h3>
+<p class="price">R$ 2,50</p>
+<a class="btn" onclick="comprar(200)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>500 Seguidores</h3>
+<p class="price">R$ 5,00</p>
+<a class="btn" onclick="comprar(500)">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">TOP</div>
+<h3>1.000 Seguidores</h3>
+<p class="price">R$ 9,00</p>
+<a class="btn" onclick="comprar(1000)">Comprar</a>
+</div>
+
+<div class="card">
+<h3>2.000 Seguidores</h3>
+<p class="price">R$ 16,00</p>
+<a class="btn" onclick="comprar(2000)">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">VIP</div>
+<h3>5.000 Seguidores</h3>
+<p class="price">R$ 35,00</p>
+<a class="btn" onclick="comprar(5000)">Comprar</a>
+</div>
+
+<h2 style="grid-column: 1/-1;">🌐 Números Virtuais</h2>
+
+<div class="card">
+<h3>Finlândia</h3>
+<p class="price">R$ 4,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>África do Sul</h3>
+<p class="price">R$ 5,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>EUA</h3>
+<p class="price">R$ 6,50</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Portugal</h3>
+<p class="price">R$ 9,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+<div class="card">
+<div class="badge">PREMIUM</div>
+<h3>Brasil</h3>
+<p class="price">R$ 14,00</p>
+<a class="btn" onclick="numero()">Comprar</a>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Lojinha dos Drakes</p>
+</footer>
+
+<script>
+function comprar(qtd) {
+    let msg = `Olá! Gostaria de fazer um pedido de ${qtd} seguidores`;
+    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+
+function numero() {
+    let msg = "Olá! Gostaria de fazer um pedido de um número virtual";
+    let url = `https://wa.me/5511959258398?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+}
+</script>
+
 </body>
 </html>
